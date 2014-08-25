@@ -22,13 +22,12 @@ ActiveRecord::Schema.define(version: 20140823034450) do
   end
 
   create_table "criterions", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "text"
+    t.integer "importance"
   end
 
   create_table "decisions", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "text"
   end
 
   create_table "streets", force: true do |t|
@@ -39,8 +38,10 @@ ActiveRecord::Schema.define(version: 20140823034450) do
   end
 
   create_table "users", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "email"
+    t.string  "name"
+    t.string  "password_digest"
+    t.boolean "is_active"
   end
 
 end
