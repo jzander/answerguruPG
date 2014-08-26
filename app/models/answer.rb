@@ -1,9 +1,8 @@
 class Answer < ActiveRecord::Base
-	
-	# field :text, type: String
-	# field :rating, type: Integer
+	has_many :criterion_answers
+  belongs_to :decision
 
-	belongs_to :decision
+  accepts_nested_attributes_for :criterion_answers
 
 end
 

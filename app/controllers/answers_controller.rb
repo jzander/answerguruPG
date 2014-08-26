@@ -13,6 +13,7 @@ before_action :get_decision, :check_security
       else
         return false
       end
+      rescue ActiveRecord::RecordNotFound
     end
 
     def new

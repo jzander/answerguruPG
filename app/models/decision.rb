@@ -1,11 +1,7 @@
 class Decision < ActiveRecord::Base
-	# field :text, type: String
-
 	belongs_to :user
 	has_many :criteria
 	has_many :answers
-  
 
-
-
+  accepts_nested_attributes_for :criteria
 end

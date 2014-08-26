@@ -11,6 +11,7 @@ class DecisionsController < ApplicationController
 	  else
 	    return false
 	  end
+	  rescue ActiveRecord::RecordNotFound
 	end
 
 	# def current_user
