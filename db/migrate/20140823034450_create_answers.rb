@@ -6,5 +6,6 @@ class CreateAnswers < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_reference :answers, :decision, index: true
   end
 end

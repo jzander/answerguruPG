@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826175740) do
+ActiveRecord::Schema.define(version: 20140826181654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,14 +21,20 @@ ActiveRecord::Schema.define(version: 20140826175740) do
     t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "decision_id"
   end
 
-  create_table "criterions", force: true do |t|
+  add_index "answers", ["decision_id"], name: "index_answers_on_decision_id", using: :btree
+
+  create_table "criteria", force: true do |t|
     t.string   "text"
     t.integer  "importance"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "decision_id"
   end
+
+  add_index "criteria", ["decision_id"], name: "index_criteria_on_decision_id", using: :btree
 
   create_table "decisions", force: true do |t|
     t.string  "text"
