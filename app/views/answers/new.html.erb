@@ -22,9 +22,10 @@
 					</div>
 
 					<br /><br />
-					
-			
+				
 
+			
+					<% end %>
 
 
 			</div>	
@@ -44,6 +45,7 @@
 						<div class="col-sm-1">
 
 							<i class="fa fa-trash-o testy"></i>
+
 							<%= button_to "", decision_answer_path(@decision.id, a.id), :class => "fa fa-trash-o pull-right btn btn-default btn-md btn-rederer widerr", method: :delete %>
 
 						</div>
@@ -56,22 +58,21 @@
 			</ul>
 		</div>
 
-	<% end %>
 </div>
 
 	<div class="text-center">
 
 		<div class="row">
-			<div class="col-xs-3">&nbsp;</div>
+			<div class="col-xs-2">&nbsp;</div>
 
 			<div class="col-xs-3">	
 				<button onclick="window.location.href='/decisions'" class="btn btn-default btn-md btn-redy">See Previous Decisions</button>
 			</div>
-				
+				<div class="col-xs-2">&nbsp;</div>
 			<div class="col-xs-3">
 				<%= link_to "Rate your answers!", decision_answers_path(@decision.id), :class => "btn btn-default btn-md btn-bluey" %>
 			</div>
-			<div class="col-xs-3">&nbsp;</div>
+			<div class="col-xs-2">&nbsp;</div>
 			
 		</div>
 	</div>

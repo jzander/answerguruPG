@@ -47,7 +47,6 @@ before_action :get_decision, :check_security
       @criteria = @decision.criteria
 
       respond_to do |format|
-
         if @answer.update(params.require(:rating).permit(:text))
           format.html { redirect_to @answer, notice: 'Feature was successfully updated.' }
           format.json { head :no_content }  
