@@ -36,7 +36,7 @@ before_action :get_decision, :check_security
 
       @answer.decision = @decision
       if @answer.save
-        redirect_to new_decision_answer_path(@decision.id)
+        redirect_to root_path
       end
 
     end
