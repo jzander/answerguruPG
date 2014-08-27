@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140826181654) do
 
   create_table "decisions", force: true do |t|
     t.string  "text"
+    t.string  "decision"
     t.integer "user_id"
   end
 
