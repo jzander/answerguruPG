@@ -28,7 +28,7 @@ class DecisionsController < ApplicationController
 	end
 
 	def new
-		@decision = Decision.new
+	@decision = Decision.new
 	@user = User.new
 	@is_login = true
 	end
