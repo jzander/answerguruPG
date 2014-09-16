@@ -10,6 +10,7 @@ class DecisionsController < ApplicationController
 	    @current_user ||= User.find(session[:user_id]) if session[:user_id]
 	  else
 	    return false
+	    redirect_to home_path
 	  end
 	  rescue ActiveRecord::RecordNotFound
 	end
@@ -21,7 +22,6 @@ class DecisionsController < ApplicationController
 	def index
 	if !current_user
 	  redirect_to home_path
-	  return
 	end
 	#	@decisions = Decision.where(user_id: current_user.id)
 	@decisions = current_user.decisions

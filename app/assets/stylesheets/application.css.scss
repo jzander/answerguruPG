@@ -307,6 +307,11 @@
  	height: 26px;
  }
 
+ .navLinks {
+
+
+ }
+
    .navLinks .btn-greye {
  	background-color: white;
  	border: none;
@@ -317,6 +322,8 @@
  	padding-bottom: 1.8em;
  	height: 26px;
  }
+
+
 
    .btn-bluey {
  	background-color: #4983E6;
@@ -720,3 +727,11 @@ ul .btn-log {
   background: #008cba; }
   .range-slider-handle:hover {
     background: #007ba4; }
+
+@media (max-width : 768px) {
+  .navLinks {
+    position: fixed;
+    right: 2.7em;
+    top: -.35em;
+  }
+}

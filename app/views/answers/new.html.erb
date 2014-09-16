@@ -34,22 +34,22 @@
 			<% @answers.each do |a| %>
 				<li>
 					<div class="criItem">
-						<div class="col-sm-2">&nbsp;</div>
-						<div class="col-sm-6 pull-left">
+						<div class="col-xs-2">&nbsp;</div>
+						<div class="col-xs-6 pull-left">
 								<b><%= a.text %></b> <br /><span class="decision"> for the decision <b><%= a.decision.text %></b></span>
 						</div>
 						
-						<div class="col-sm-1 rating text-center">
+						<div class="col-xs-1 rating text-center">
 						&nbsp;
 						</div>
-						<div class="col-sm-1">
+						<div class="col-xs-1">
 
 							<i class="fa fa-trash-o testy"></i>
 
 							<%= button_to "", decision_answer_path(@decision.id, a.id), :class => "fa fa-trash-o pull-right btn btn-default btn-md btn-rederer widerr", method: :delete %>
 
 						</div>
-						<div class="col-sm-2">&nbsp;</div>
+						<div class="col-xs-2">&nbsp;</div>
 				
 					</div>
 						<br /><br />
@@ -63,16 +63,18 @@
 	<div class="text-center">
 
 		<div class="row">
-			<div class="col-xs-2">&nbsp;</div>
+	
+			<div class="col-sm-3">&nbsp;</div>
 
-			<div class="col-xs-3">	
+			<div class="col-sm-3">	
 				<button onclick="window.location.href='/decisions'" class="btn btn-default btn-md btn-redy">See Previous Decisions</button>
 			</div>
-				<div class="col-xs-2">&nbsp;</div>
-			<div class="col-xs-3">
+
+			<div class="col-sm-3">
 				<%= link_to "Rate your answers!", decision_answers_path(@decision.id), :class => "btn btn-default btn-md btn-bluey" %>
 			</div>
-			<div class="col-xs-2">&nbsp;</div>
+			<div class="col-sm-3">&nbsp;</div>
+
 			
 		</div>
 	</div>

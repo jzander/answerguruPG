@@ -29,14 +29,12 @@ before_action :get_decision, :check_security
       #find our parent decision that we should attach to?
       @answer = Answer.new(
         params.require(:answer).permit(:rating, :text))
- 
       
-
       #attaches this answer to a decision.
 
       @answer.decision = @decision
       if @answer.save
-        redirect_to root_path
+        redirect_to new_decision_answer_path(@decision.id)
       end
 
     end
