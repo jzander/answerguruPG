@@ -28,7 +28,7 @@ before_action :get_decision, :check_security
     def create
       #find our parent decision that we should attach to?
       @answer = Answer.new(
-        params.require(:answer).permit(:rating))
+        params.require(:answer).permit(:rating, :text))
       
       #attaches this answer to a decision.
 
