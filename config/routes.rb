@@ -10,6 +10,7 @@ root to: 'decisions#new'
 
   post 'criteria_answers/:id' => 'criteria_answers#create', as: :create_criteriaanswer
   get 'criteria_answers/:id' => 'criteria_answers#show', as: :criteria_answer
+  get 'criteria_answers/:id/edit' => 'criteria_answers#edit', as: :edit_criteriaanswer
 
   get 'decisions/home' => 'decisions#home', as: :home
 

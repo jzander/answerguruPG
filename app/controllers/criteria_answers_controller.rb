@@ -17,6 +17,10 @@ class CriteriaAnswersController < ApplicationController
   end
 
   def create
+    @answers = @decision.answers
+    @criteria = @decision.criteria
+    @answer = Answer.new
+    @criterion_answer = criterion_answer.new
 
    # var myanswerid = decision.answers.id
 
@@ -42,6 +46,16 @@ class CriteriaAnswersController < ApplicationController
        # next answer criteria
 
         # redirect to edit
+
+    for each decision.answer.id do |w|
+      for each decision.criterion do |e|
+        criterion_answer.create(
+        decision.answer[:id],
+        decision.criteria[:id])
+        .save
+      end
+    end
+    redirect_to edit_criteriaanswer_path
 
   end
 
