@@ -8,6 +8,9 @@ root to: 'decisions#new'
 
   end
 
+  post 'criteria_answers/:id' => 'criteria_answers#create', as: :create_criteriaanswer
+  get 'criteria_answers/:id' => 'criteria_answers#show', as: :criteria_answer
+
   get 'decisions/home' => 'decisions#home', as: :home
 
   resource :session, only: [:new, :create, :destroy]
@@ -20,9 +23,5 @@ root to: 'decisions#new'
   put 'users/:id' => 'users#update'
   patch 'users/:id' => 'users#update'
   delete 'users/:id' => 'users#destroy'
-
-
-  get 'criteriaforanswer' => 'criteriaforanswer#index'
-
 
 end

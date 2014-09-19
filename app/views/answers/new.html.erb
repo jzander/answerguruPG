@@ -71,8 +71,9 @@
 			</div>
 
 			<div class="col-sm-3">
-				<%= link_to "Rate your answers!", decision_answers_path(@decision.id), :class => "btn btn-default btn-md btn-bluey" %>
+				<%= link_to "Rate your answers!", create_criteriaanswer_path(@decision.id), method: :post, :class => "btn btn-default btn-md btn-bluey" %>
 			</div>
+
 			<div class="col-sm-3">&nbsp;</div>
 
 			
