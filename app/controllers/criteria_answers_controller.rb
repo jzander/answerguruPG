@@ -1,6 +1,5 @@
 class CriteriaAnswersController < ApplicationController
 
-  
     def current_user
       if User && :user_id && session[:user_id]
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -29,6 +28,7 @@ class CriteriaAnswersController < ApplicationController
     @decision = Decision.find(params[:id])
     # passed_id = params(:id)
     # decision = decisions.where(:id = passed_id)
+  
     @decision.answers.each do |a|
       @decision.criteria.each do |c|
         onerec = CriteriaAnswer.new
@@ -45,13 +45,13 @@ class CriteriaAnswersController < ApplicationController
         # newrecord.save  
       end
     end
-    redirect_to edit_criteriaanswer_path
+
+    redirect_to edit_criteria_answer_path
     ## go to edit view where user can rate 
 
   end
 
   def create
-
     # # params.require(:decision).permit(:id)
     # @decision = Decision.find(params[:id])
     # # passed_id = params(:id)
@@ -97,11 +97,32 @@ class CriteriaAnswersController < ApplicationController
        # next answer criteria
 
         # redirect to edit
-
 end
 
   def edit
+      @decision = Decision.find(params[:id])
+      @answers = @decision.answers
+      @criteria = @decision.criteria
+      # @answer = Answer.new
+      # binding.pry
+      # each(
+      #   params.require(:answer).permit(:text, :rating)
+      #   )
+      # @criterionanswer = CriterionAnswer.new
+      # @answers = @decision.answers
+      # @criteria_answers.new
+      # @answers = @decision.answers
+      # @criteria = @decision.criteria
 
+      # respond_to do |format|
+      #   if @answer.update(params.require(:rating).permit(:text))
+      #     format.html { redirect_to edit_criteria_answer_path, notice: 'Feature was successfully updated.' }
+      #     format.json { head :no_content }  
+      #   else
+      #     format.html { render action: 'edit' }
+      #     format.json { render json: @answer.errors, status: :unprocessable_entity }
+      #   end
+      # end
     # render form for rating criteria for all the crieria_answers
 
     # @criteria_answers = answers.criteria_answers.all
@@ -112,6 +133,7 @@ end
 
   def update
 
+    @answers.rating.save
     # save rating and redirects to index
 
 
@@ -119,6 +141,12 @@ end
 
   def show
 
+  end
+
+private
+  def get_decision
+     #find our parent decision that we should attach to
+     @decision = Decision.find(params[:decision_id])
   end
 
 end

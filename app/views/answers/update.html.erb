@@ -8,7 +8,7 @@
 			<li class="answertxt">For <%= p.text %></li><br />
 			<ul><span class="ratetxt">Rate the criteria: </span>
 			
-		<% @criteria.each do |z| %>
+		<% @criteria do |z| %>
 			<li class="criteriatxt">Rate <span class="criTxtt"> <%= z.text %></span>
 
 			 for <%= p.text %> <%= q.select :rating,  
@@ -31,7 +31,7 @@
 	</ul> <br />
 	<% end %>
 			
-<%= q.submit :class => "btn btn-default btn-md btn-bluer text-center", value: "calculate", method: :get %>			
+<%= q.submit :class => "btn btn-default btn-md btn-bluer text-center", value: "calculate" %>			
 <% end %>
 
 </div>
