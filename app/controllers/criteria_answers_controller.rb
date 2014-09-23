@@ -156,6 +156,7 @@ private
      #find our parent decision that we should attach to
      @decision = Decision.find(params[:decision_id])
   end
+  
   def criteria_answer_params
     params.require(:criteria_answer).permit(:rating, :criteria_id, :answer_id, :id)
   end
