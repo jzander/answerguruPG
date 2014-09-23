@@ -8,9 +8,10 @@ root to: 'decisions#new'
 
   end
 
-  post 'criteria_answers/:id' => 'criteria_answers#create', as: :create_criteriaanswer
+  post 'criteria_answers/:id' => 'criteria_answers#create', as: :create_criteria_answer
   get 'criteria_answers/:id' => 'criteria_answers#show', as: :criteria_answer
-  get 'criteria_answers/:id/edit' => 'criteria_answers#edit', as: :edit_criteriaanswer
+  get 'criteria_answers/:id/edit' => 'criteria_answers#edit', as: :edit_criteria_answer
+  get 'criteria_answer/:id/new' => 'criteria_answers#new', as: :new_criteria_answer
 
   get 'decisions/home' => 'decisions#home', as: :home
 

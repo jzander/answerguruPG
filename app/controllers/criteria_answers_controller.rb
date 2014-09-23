@@ -1,7 +1,16 @@
 class CriteriaAnswersController < ApplicationController
 
-  def index
+  
+    def current_user
+      if User && :user_id && session[:user_id]
+        @current_user ||= User.find(session[:user_id]) if session[:user_id]
+      else
+        return false
+      end
+      rescue ActiveRecord::RecordNotFound
+    end
 
+  def index
       #run algorith to multiply each criteria weight by each answer rate,
 
       # for each answer, 
@@ -13,14 +22,56 @@ class CriteriaAnswersController < ApplicationController
       #   present the answer with the highest value.
 
       #show results
+  end
+
+  def new
+
+    @decision = Decision.find(params[:id])
+    # passed_id = params(:id)
+    # decision = decisions.where(:id = passed_id)
+    @decision.answers.each do |a|
+      @decision.criteria.each do |c|
+        onerec = CriteriaAnswer.new
+        onerec.decision_id = a.id
+        onerec.criterion_id = c.id
+        onerec.rating = 0
+        onerec.save
+
+        # CriteriaAnswer.create([
+        #   {decision_id: a.id,
+        #   criterion_id: c.id,
+        #   rating: 0}
+        #   ])
+        # newrecord.save  
+      end
+    end
+    redirect_to edit_criteriaanswer_path
 
   end
 
   def create
-    @answers = @decision.answers
-    @criteria = @decision.criteria
-    @answer = Answer.new
-    @criterion_answer = criterion_answer.new
+
+    # # params.require(:decision).permit(:id)
+    # @decision = Decision.find(params[:id])
+    # # passed_id = params(:id)
+    # # decision = decisions.where(:id = passed_id)
+    # @decision.answers.each do |a|
+    #   @decision.criteria.each do |c|
+    #     newrecord = Criteria_answer.new
+    #     newrecord.create(
+    #       :decision_id => a(:id),
+    #       :criterion_id => c(:id),
+    #       :rating => 0)
+    #     newrecord.save  
+    #   end
+    # end
+    # redirect_to edit_criteriaanswer_path
+
+    # @decision = Decision.find(params[:id])
+    # @answers = @decision.answers
+    # @criteria = @decision.criteria
+    # @answer = Answer.new
+    # @criterion_answer = criterion_answer.new
 
    # var myanswerid = decision.answers.id
 
@@ -40,24 +91,13 @@ class CriteriaAnswersController < ApplicationController
 
         #       .save
 
-
        # next decision criteria
 
        # next answer criteria
 
         # redirect to edit
 
-    for each decision.answer.id do |w|
-      for each decision.criterion do |e|
-        criterion_answer.create(
-        decision.answer[:id],
-        decision.criteria[:id])
-        .save
-      end
-    end
-    redirect_to edit_criteriaanswer_path
-
-  end
+end
 
   def edit
 
@@ -75,9 +115,9 @@ class CriteriaAnswersController < ApplicationController
 
 
   end
+
   def show
+
   end
-
-
 
 end

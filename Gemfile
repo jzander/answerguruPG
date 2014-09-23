@@ -43,6 +43,18 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development, :test do
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem "rspec-rails"
+  gem "factory_girl_rails"
+end
+
+group :test do
+  gem "faker"
+  gem "capybara"
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

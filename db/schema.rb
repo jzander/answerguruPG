@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20140918000832) do
     t.integer  "decision_id"
   end
 
+  add_index "criteria", ["decision_id"], name: "index_criteria_on_decision_id", using: :btree
+
   create_table "criteria_answers", force: true do |t|
     t.integer  "answer_id"
     t.integer  "criterion_id"
