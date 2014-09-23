@@ -8,6 +8,7 @@ root to: 'decisions#new'
 
   end
 
+  get 'criteria_answers' => 'criteria_answers#index', as: :crit_answer
   post 'criteria_answers/:id' => 'criteria_answers#create', as: :create_criteria_answer
   get 'criteria_answers/:id' => 'criteria_answers#show', as: :criteria_answer
   get 'criteria_answers/:id/edit' => 'criteria_answers#edit', as: :edit_criteria_answer

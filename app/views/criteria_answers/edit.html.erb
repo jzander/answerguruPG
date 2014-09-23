@@ -3,7 +3,7 @@
 <%#= form_for [@answers] do |y| %>
   <ul class="listOne">
 
-<%= form_for @answers do |q| %>
+<%= form_for @criteria_answer, url: create_criteria_answer_path(id: @decision.id) do |q| %>
   
   <% @answers.each do |p| %>
       <li class="answertxt">For <%= p.text %></li><br />

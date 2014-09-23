@@ -52,6 +52,8 @@ class CriteriaAnswersController < ApplicationController
   end
 
   def create
+
+
     # # params.require(:decision).permit(:id)
     # @decision = Decision.find(params[:id])
     # # passed_id = params(:id)
@@ -97,12 +99,18 @@ class CriteriaAnswersController < ApplicationController
        # next answer criteria
 
         # redirect to edit
+
+  criteria_answer = CriteriaAnswer.new(criteria_answer_params)
+  if criteria_answer.save
+    redirect_to crit_answer_path
+  end
 end
 
   def edit
       @decision = Decision.find(params[:id])
       @answers = @decision.answers
       @criteria = @decision.criteria
+      @criteria_answer = CriteriaAnswer.new
       # @answer = Answer.new
       # binding.pry
       # each(
@@ -147,6 +155,9 @@ private
   def get_decision
      #find our parent decision that we should attach to
      @decision = Decision.find(params[:decision_id])
+  end
+  def criteria_answer_params
+    params.require(:criteria_answer).permit(:rating, :criteria_id, :answer_id, :id)
   end
 
 end
