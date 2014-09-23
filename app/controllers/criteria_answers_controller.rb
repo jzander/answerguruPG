@@ -32,9 +32,9 @@ class CriteriaAnswersController < ApplicationController
     @decision.answers.each do |a|
       @decision.criteria.each do |c|
         onerec = CriteriaAnswer.new
-        onerec.decision_id = a.id
+        onerec.decision_id  = a.id
         onerec.criterion_id = c.id
-        onerec.rating = 0
+        onerec.rating       = 0
         onerec.save
 
         # CriteriaAnswer.create([
@@ -46,6 +46,7 @@ class CriteriaAnswersController < ApplicationController
       end
     end
     redirect_to edit_criteriaanswer_path
+    ## go to edit view where user can rate 
 
   end
 
