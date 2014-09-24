@@ -49,9 +49,9 @@ class DecisionsController < ApplicationController
 	end
 
 	def update
-    criteria_answer = CriteriaAnswer.new(criteria_answer_params)
-    
-    if criteria_answer.save
+    decision = Decision.where(id: params[:id]).first
+
+    if decision.update(decision_params)
       redirect_to crit_answer_path
     end
 	end
