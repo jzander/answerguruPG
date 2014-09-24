@@ -48,15 +48,23 @@ class DecisionsController < ApplicationController
 		end
 	end
 
+	def show
+
+		@decision = Decision.find(params[:id])
+
+	end
+
 	def update
+		#saves rating to criteria for each answer
     decision = Decision.where(id: params[:id]).first
 
-    if decision.update(decision_params)
-      redirect_to crit_answer_path
+    if decision.update decision_params
+      redirect_to decision_path(decision)
     end
 	end
 
 	def destroy
+		#deletes a decision
 		Decision.find(params[:id]).destroy
 		if Decision.count < 1
 			redirect_to new_decision_path
@@ -68,6 +76,7 @@ class DecisionsController < ApplicationController
 	def decision_params
 		params.require(:decision).permit(
 				answers_attributes: [
+					:id,
 					criteria_answers_attributes: [:id, :rating]
 				]
 			)

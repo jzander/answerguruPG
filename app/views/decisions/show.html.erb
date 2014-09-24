@@ -1,0 +1,11 @@
+<% @decision.answer_result.each do |rate| %>
+
+
+  <%= rate.text %> 
+
+  <% result = rate.total_val*100 %>
+  <%= result.to_i %>  %
+
+<br />
+
+<% end %>

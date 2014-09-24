@@ -2,7 +2,7 @@ AnswerguruPg::Application.routes.draw do
 
 root to: 'decisions#new'
 
-  resources :decisions, only: [:index, :new, :create, :destroy, :edit, :update] do
+  resources :decisions, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
     resources :criteria, only: [:index, :new, :create, :destroy]
       resources :answers, only: [:index, :new, :create, :update, :destroy]
 
