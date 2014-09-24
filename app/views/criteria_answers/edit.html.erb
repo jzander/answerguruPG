@@ -1,36 +1,25 @@
 <div class="container">
-  <div class="answerRateBlock"
-<%#= form_for [@answers] do |y| %>
+  <div class="answerRateBlock">
+
+<%= form_for @decision do |f| %>
   <ul class="listOne">
+  <%= f.fields_for :answers do |ans_builder| %>
+      <li class="answertxt">For <%= ans_builder.object.text %><br />
 
-<%= form_for @criteria_answer, url: create_criteria_answer_path(id: @decision.id) do |q| %>
-  
-  <% @answers.each do |p| %>
-      <li class="answertxt">For <%= p.text %></li><br />
-      <ul><span class="ratetxt">Rate the criteria: </span>
-      for <%= p.text %> 
-    <% @criteria.each do |z| %>
-      <li class="criteriatxt">Rate <span class="criTxtt"> <%= z.text %></span>
-        <select>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
-      </li>
+      <span class="ratetxt">Rate the criteria: </span>
 
+      <%= ans_builder.fields_for :criteria_answers do |crit_builder| %>
+        <li class="criteriatxt">Rate <span class="criTxtt">
+          <%= crit_builder.object.criterion.text %></span>
+          <%= crit_builder.text_field :rating %>
+          <%= crit_builder.select :rating, [["<< select, bitch >>", nil]] + (1..10).map {|n| [n,n]} %>
+        </li>
     <% end %>
-
-  </ul> <br />
+    </li>
   <% end %>
+  </ul> <br />
       
-<%= q.submit :class => "btn btn-default btn-md btn-bluer text-center", value: "calculate" %>      
+  <%= f.submit :class => "btn btn-default btn-md btn-bluer text-center", value: "calculate" %>      
 <% end %>
 
 </div>
@@ -39,8 +28,6 @@
 
 
     <%#= form_for [@decision, @answer] do |q| %>
-
-
 </div>
 
 <br /><br />

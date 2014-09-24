@@ -4,4 +4,5 @@ class Decision < ActiveRecord::Base
 	has_many :answers
 
   accepts_nested_attributes_for :criteria
+  accepts_nested_attributes_for :answers
 end

@@ -1,13 +1,13 @@
 class CriteriaAnswersController < ApplicationController
 
-    def current_user
-      if User && :user_id && session[:user_id]
-        @current_user ||= User.find(session[:user_id]) if session[:user_id]
-      else
-        return false
-      end
-      rescue ActiveRecord::RecordNotFound
+  def current_user
+    if User && :user_id && session[:user_id]
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    else
+      return false
     end
+    rescue ActiveRecord::RecordNotFound
+  end
 
   def index
       #run algorith to multiply each criteria weight by each answer rate,
@@ -100,17 +100,16 @@ class CriteriaAnswersController < ApplicationController
 
         # redirect to edit
 
-  criteria_answer = CriteriaAnswer.new(criteria_answer_params)
-  if criteria_answer.save
-    redirect_to crit_answer_path
+    criteria_answer = CriteriaAnswer.new(criteria_answer_params)
+    
+    if criteria_answer.save
+      redirect_to crit_answer_path
+    end
+
   end
-end
 
   def edit
       @decision = Decision.find(params[:id])
-      @answers = @decision.answers
-      @criteria = @decision.criteria
-      @criteria_answer = CriteriaAnswer.new
       # @answer = Answer.new
       # binding.pry
       # each(
@@ -136,15 +135,13 @@ end
     # @criteria_answers = answers.criteria_answers.all
 
     # button to calculate redirects to update (submit automatically goes to update)
-
   end
 
   def update
-
-    @answers.rating.save
+    if @criteria_answer.update(criteria_answer_params)
     # save rating and redirects to index
-
-
+      redirect_to crit_answer_path
+    end
   end
 
   def show
@@ -156,7 +153,7 @@ private
      #find our parent decision that we should attach to
      @decision = Decision.find(params[:decision_id])
   end
-  
+
   def criteria_answer_params
     params.require(:criteria_answer).permit(:rating, :criteria_id, :answer_id, :id)
   end

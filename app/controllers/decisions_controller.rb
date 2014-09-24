@@ -48,6 +48,14 @@ class DecisionsController < ApplicationController
 		end
 	end
 
+	def update
+    criteria_answer = CriteriaAnswer.new(criteria_answer_params)
+    
+    if criteria_answer.save
+      redirect_to crit_answer_path
+    end
+	end
+
 	def destroy
 		Decision.find(params[:id]).destroy
 		if Decision.count < 1
@@ -55,6 +63,14 @@ class DecisionsController < ApplicationController
 		else
 			redirect_to decisions_path
 		end
+	end
+
+	def decision_params
+		params.require(:decision).permit(
+				answers_attributes: [
+					criteria_answers_attributes: [:id, :rating]
+				]
+			)
 	end
 
 end
