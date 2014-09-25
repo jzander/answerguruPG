@@ -8,7 +8,7 @@
 <% @decision.answer_result.each do |rate| %>
 
 <div class="ranks text-center">
-  <%= rate.text %> 
+  <%= rate.text %>: 
 
   <% result = rate.total_val*100 %>
   <%= result.to_i %>  points
@@ -30,7 +30,7 @@
 </div>
 <div class="text-center resulttxt fadeInT">
 <h1 class="winnertext"><%= @winner[0] %></h1> 
-<h4>is your best answer with a score of:</h4>
+<h4 class="margtext">is your best answer with a score of:</h4>
 
 <h1 class="perctxt"><%= @winner[1].to_i %> points</h1> 
 </div>
