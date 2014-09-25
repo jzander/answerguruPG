@@ -4,23 +4,21 @@
 <%= form_for @decision do |f| %>
   <ul class="listOne">
   <%= f.fields_for :answers do |ans_builder| %>
-      <li class="answertxt">For <%= ans_builder.object.text %><br />
-
-      <span class="ratetxt">Rate the criteria: </span>
+      <li class="answertxt">For <%= ans_builder.object.text %>:<br />
 
       <%= ans_builder.fields_for :criteria_answers do |crit_builder| %>
         <li class="criteriatxt">Rate <span class="criTxtt">
           <%= crit_builder.object.criterion.text %></span>
           <%#= crit_builder.text_field :rating %>
-          <%= crit_builder.select :rating, [["<< select, bitch >>", nil]] + (1..10).map {|n| [n,n]} %>
+          <%= crit_builder.select :rating, [["Select a rating", nil]] + (1..10).map {|n| [n,n]} %>
         </li>
     <% end %>
-    </li>
+    </li><br />
   <% end %>
   
-  </ul> <br />
+  </ul> 
       
-  <%= f.submit :class => "btn btn-default btn-md btn-bluer text-center", value: "calculate" %>      
+  <%= f.submit :class => "btn btn-default btn-md btn-bluer text-center", value: "FIND YOUR ANSWER" %>      
 <% end %>
 
 </div>
