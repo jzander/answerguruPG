@@ -6,7 +6,7 @@
 <%= form_for [@decision, @answer] do |q| %>
 	<% @answers.each do |p| %>
 			<li class="answertxt">For <%= p.text %></li><br />
-			<ul><span class="ratetxt">Rate the criteria: </span>
+			<ul>
 			
 		<% @criteria do |z| %>
 			<li class="criteriatxt">Rate <span class="criTxtt"> <%= z.text %></span>
