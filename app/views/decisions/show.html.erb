@@ -11,7 +11,7 @@
   <%= rate.text %> 
 
   <% result = rate.total_val*100 %>
-  <%= result.to_i %>  %
+  <%= result.to_i %>  points
  
   <% @resulthash[rate.text] = result %>
 
@@ -28,10 +28,10 @@
 
 <%# raise @winner.inspect %>
 </div>
-<div class="text-center resulttxt">
+<div class="text-center resulttxt fadeInT">
 <h1 class="winnertext"><%= @winner[0] %></h1> 
 <h4>is your best answer with a score of:</h4>
 
-<h1 class="perctxt"><%= @winner[1].to_i %>%</h1> 
+<h1 class="perctxt"><%= @winner[1].to_i %> points</h1> 
 </div>
 
