@@ -1,6 +1,6 @@
 AnswerguruPg::Application.routes.draw do
 
-root to: 'decisions#new'
+root to: 'decisions#home'
 
   resources :decisions, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
     resources :criteria, only: [:index, :new, :create, :destroy]
@@ -15,6 +15,7 @@ root to: 'decisions#new'
   get 'criteria_answer/:id/new' => 'criteria_answers#new', as: :new_criteria_answer
 
   get 'decisions/home' => 'decisions#home', as: :home
+  # get 'decisions/result' => 'decisions#show', as: :show
 
   resource :session, only: [:new, :create, :destroy]
 

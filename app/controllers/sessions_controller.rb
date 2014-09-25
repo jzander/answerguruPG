@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 			#store as a cookie in the users browser, their unique user id indicating that the user has logged in.
 
 			session[:user_id] = u.id.to_s
-			redirect_to root_path
+			redirect_to new_decision_path(current_user)
 		else
 			flash.now.alert = "Email or password is invalid"
 			#go back to login page.
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
 	def destroy
 		session[:user_id] = nil
 		reset_session
-		redirect_to decisions_path
+		redirect_to root_path
 	end
 
 end
