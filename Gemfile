@@ -34,7 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'font-awesome-rails', '~> 4.1.0.0'
 
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 gem 'unicorn'
 
@@ -67,3 +67,5 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+ruby "2.1.2"
