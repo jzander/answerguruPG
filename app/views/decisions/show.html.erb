@@ -1,34 +1,37 @@
+
+<div class="rankrating">
+
 <% @resulthash = Hash.new  %>
 
 
  
 <% @decision.answer_result.each do |rate| %>
 
-
+<div class="ranks text-center">
   <%= rate.text %> 
 
   <% result = rate.total_val*100 %>
   <%= result.to_i %>  %
-  
+ 
   <% @resulthash[rate.text] = result %>
 
-
+</div> 
 <br />
 
 
 
 <% end %>
-
+</div>
 
 <% @winner = @resulthash.max_by{|k,v| v} %>
 
 
 <%# raise @winner.inspect %>
-
-<div class="text-center">
-<h1><%= @winner[0] %></h1> 
+</div>
+<div class="text-center resulttxt">
+<h1 class="winnertext"><%= @winner[0] %></h1> 
 <h4>is your best answer with a score of:</h4>
 
-<h1><%= @winner[1].to_i %>%</h1> 
+<h1 class="perctxt"><%= @winner[1].to_i %>%</h1> 
 </div>
 
